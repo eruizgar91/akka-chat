@@ -12,12 +12,13 @@ object StartClient {
       System.exit(0)
     }
     val config = ConfigFactory.load("client")
-    val clientSystem = ActorSystem("ClientSystem", config)
+    val clientSystem = ActorSystem("CpepelientSystem", config)
     println("Enter your Nick Name:")
-    var name = Console.readLine.trim
+//    var name = Console.readLine.trim
+    var name = scala.io.StdIn.readLine().trim
     while (name == "") {
       println("Enter your Nick Name:")
-      name = Console.readLine.trim
+      name = scala.io.StdIn.readLine().trim
     }
     val client = clientSystem.actorOf(Props(new Client(name, args(0))), "Client")
 
